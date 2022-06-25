@@ -1,0 +1,7 @@
+name: pythonAdv
+channels:
+  - defaults
+dependencies:
+  - python
+  - mypy
+prefix: /home/juanjm/anaconda3/envs/pythonAdv
