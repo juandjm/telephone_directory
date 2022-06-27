@@ -1,3 +1,4 @@
+import os
 from contact import Contact
 
 class Directory:
@@ -54,8 +55,9 @@ class Directory:
     # Show all the contacts in the contacts array
     def show_contacts(self):
         for contact in self.contact_list:
-            for atribute in contact:
-                print('{}: {}'.format(atribute, contact.get(atribute)))
+            for key, value in contact.items():
+                print('{}: {}'.format(key, value))
+            print('---------')
 
     # Creates the contact dictionary
     def contact_info(self, name, number):
@@ -65,12 +67,25 @@ class Directory:
         }
         return contact_dict
 
+    # Edits a contact
+    def edit_contact_message(self):
+        index = 1
+        print('Sus contactos acuales son:')
+        for contact in self.contact_list:
+            print('{}. {}'.format(index, contact["Name"]))
+            index += 1
+
+    # Edits a contact name and number 
+    def contact_selector(self, index):
+        self.contact_list[index]
+        print('Datos actuales: Nombre->{} | Número->{}'.format(self.contact_list[index].get('Name'), self.contact_list[index].get('Number')))
+        self.contact_list[index]['Name'] = input('Nuevo Nombre: ')
+        self.contact_list[index]['Number'] = int(input('Nuevo Numero: '))
+
+    # Edit contact main menu
+    def edit_contact_input(self):
+        self.edit_contact_message()
+        option = int(input('Elija una opción: ')) - 1
+        self.contact_selector(option)
 
 
-
-contacts = []
-xd = Directory(contacts)
-
-xd.contact_creator()
-
-xd.show_contacts()
