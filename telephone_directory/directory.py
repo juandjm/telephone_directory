@@ -1,4 +1,5 @@
-import os
+import random
+import time
 from contact import Contact
 
 class Directory:
@@ -87,5 +88,41 @@ class Directory:
         self.edit_contact_message()
         option = int(input('Elija una opción: ')) - 1
         self.contact_selector(option)
+
+    # Delete contact validation
+    def delete_validation(self):
+        print('¿Está seguro de eliminar el contacto? 1. Sí 2. No')
+        validation = int(input('Elige una opción: '))
+        return validation
+    
+    # Delete contact main menu
+    def delete_contact_input(self):
+        self.edit_contact_message()
+        option = int(input('Elija una opción: ')) - 1
+        validation = self.delete_validation()
+        if validation == 1:
+            del self.contact_list[option]
+        else:
+            pass
+
+    def calling_contact(self, option):
+        print('Llamando a {}'.format(self.contact_list[option].get('Name')))
+        time.sleep(2)
+        self.random_message()
+
+    def random_message(self):
+        msg = (
+            'Estoy ocupado, deja un mensaje',
+            'Ahora no, por favor',
+            'El usuario no se encuentra disponible',
+            'En el momento no hay cobertura',
+            'Tal vez mañana.... gracias'
+        )
+        print(random.choice(msg))
+
+    def call_contact_input(self):
+        self.edit_contact_message()
+        option = int(input('Elija una opción: ')) - 1
+        self.calling_contact(option)
 
 

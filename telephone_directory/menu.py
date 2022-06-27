@@ -1,4 +1,3 @@
-import os
 from directory import Directory
 
 def main_menu():
@@ -21,9 +20,9 @@ def user_choice(contacts, option):
     elif option == 2:
         contacts.edit_contact_input()
     elif option == 3:
-        pass
+        contacts.delete_contact_input()
     elif option == 4:
-        pass
+        contacts.call_contact_input()
     elif option == 5:
         contacts.show_contacts()
     elif option == 6:
@@ -44,7 +43,6 @@ def run():
         if opt == 6:
             break
     exit_message()
-
 
 if __name__ == '__main__':
     run()
